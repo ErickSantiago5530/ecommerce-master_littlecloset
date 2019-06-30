@@ -1,0 +1,117 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.circle-shopping-cart{
+  background-color: #EBEDDB;
+  border-radius: 50%;
+  padding: 0.5em 0.5em;
+}
+
+.products-container{
+  .product{
+    margin-top: 1em;
+  }
+}
+
+.navbar{
+  margin-bottom:0px;
+}
+
+.sale-data{
+  padding: 1em;
+  text-align: center;
+  border-right: solid 1px #222;
+  span{
+    display: block;
+    font-size: 2.2em;
+    color: #3f51b5;
+  }
+}
+
+.top-space{
+  margin-top: 1em;
+}
+
+.text-center{
+  margin:center;
+}
+
+.creado{
+  background-color: #d4e157;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.big-padding{
+    padding:30px;
+}
+
+.blue-grey{
+  background-color:#37474f;
+}
+
+.white-text{
+  color:white;
+}
+
+.table{
+  background-color: white;
+}
+
+.white{
+  background-color: white;
+}
+
+.floating{
+  position:fixed;
+  bottom:2em;
+  right: 2em;
+  z-index:100;
+}
+
+.product{
+  width:600px;
+  max-width: 100%;
+  padding:1em;
+  position: relative;
+
+  h1{
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+  }
+}
+
+.no-margin{
+  margin:0px;
+}
+
+.no-padding{
+  margin:0px;
+}
+
+.big-padding{
+  margin:0px;
+}
+
+.large-padding{
+  padding:10px 15px;
+}
+
+.no-transform{
+  text-transform: none;
+}
+
+.product-avatar{
+  width:230px;
+  height:180px;
+}
