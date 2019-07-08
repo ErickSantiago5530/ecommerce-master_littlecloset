@@ -18,5 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('products',"ProductsController");
+// Route::apiResource('products',"ProductsController");
+// Route::apiResource('boxes',"BoxesController");
 // Route::get('/products/{id}', 'ProductsController@show');//muestra detalles producto

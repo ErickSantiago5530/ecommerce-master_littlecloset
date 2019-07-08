@@ -52,3 +52,6 @@ Route::resource('in_shopping_carts','InShoppingCartsController',[
 Route::resource('orders','OrdersController',[
   'only' => ['index','update']
 ]);
+Route::resource('boxes','BoxesController',[
+  'only' => ['index','update']
+]);

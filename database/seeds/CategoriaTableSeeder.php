@@ -12,7 +12,13 @@ class CategoriaTableSeeder extends Seeder
     public function run()
     {
       DB::table('categoria')->insert([
-        'nombre' => 'uniformes'
+        'nombre' => 'Uniformes'
+      ]);
+      DB::table('categoria')->insert([
+        'nombre' => 'Deportes'
+      ]);
+      DB::table('categoria')->insert([
+        'nombre' => 'Hurbano'
       ]);
     }
 }
