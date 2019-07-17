@@ -21,8 +21,11 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        // dd($_POST,$_GET);
+        // dd(auth()->id());
         $products = Product::all();
+        // $id_usuario = auth()->id();
+        // $products = Product::where('id_usuario',auth()->id());
+        // dd($products);
         return response()->json($products,200);
 
         // return view('products.index',['products'=>$products]);
@@ -47,29 +50,19 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-
-      $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
-      $product = new Product;
+      // dd($request);
+      $product = new Product();
       $product->titulo = $request->titulo;
-      $product->precio = $request->precio;
       $product->descripcion = $request->descripcion;
-      $product->id_usuario = Auth::user()->id;
-
-      if ($hasFile) {
-        $extension = $request->cover->extension();//devuelve la extension que queremos subir
-      }
-      $product->extension = $extension;
-      if($product->save()){
-        if ($hasFile) {
-          //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-          $request->cover->storeAs('images',$product->id.".".$extension);
-        }
-
-        return redirect("/products");
+      $product->precio = $request->precio;
+      $product->id_categoria = $request->id_categoria;
+      $product->extension = "jpg";
+      $product->id_usuario = auth()->id();
+      if ($product->save()) {
+        return response()->json($product,200);
       }else{
-        return view("products.create",['product'=>$product]);
+        return response()->json(array('resp'=>'Error al guardar Producto'),500);
       }
-
     }
 
     /**
@@ -80,26 +73,10 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-      dd($id);
       $product = Product::find($id);
       // return view("products.show",["product"=>$product]);
       return response()->json($product,200);
 
-    }
-
-    public function unsoloproducto($id){
-      $products = Product::all();
-      foreach ($products as $producto ) {
-        if($producto->id == $id){
-          return $producto;
-        }
-      }
-      // $resultados = DB::select("SELECT * from products");
-      // echo $products;
-      // $users = User::all();
-      return response()->json($products,200);
-      // $id = 5;
-        // $product = Product::find($id);
     }
     /**
      * Show the form for editing the specified resource.
@@ -111,7 +88,9 @@ class ProductsController extends Controller
     {
       // var_dump($id);die();
       $product = Product::find($id);
-      return view("products.edit",["product"=>$product]);
+      // return view("products.edit",["product"=>$product]);
+      return response()->json($product,200);
+
         //
     }
 
@@ -124,27 +103,41 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
+      // $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
+      // $product = Product::find($id);
+      // $product->titulo = $request->titulo;
+      // $product->precio = $request->precio;
+      // $product->descripcion = $request->descripcion;
+      // $product->id_usuario = Auth::user()->id;
+      //
+      // if ($hasFile) {
+      //   $extension = $request->cover->extension();//devuelve la extension que queremos subir
+      // }
+      // $product->extension = $extension;
+      //
+      // if($product->save()){
+      //   if ($hasFile) {
+      //     //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
+      //     $request->cover->storeAs('images',$product->id.".".$extension);
+      //   }
+      //   return redirect("/products");
+      // }else{
+      //   return view("products.edit",['product'=>$product]);
+      // }
+      // dd($request->titulo);
+      $return = array();
       $product = Product::find($id);
       $product->titulo = $request->titulo;
-      $product->precio = $request->precio;
       $product->descripcion = $request->descripcion;
-      $product->id_usuario = Auth::user()->id;
+      $product->precio = $request->precio;
+      $product->id_categoria = $request->id_categoria;
+      $product->extension = "jpg";
+      $product->id_usuario = auth()->id();
+      $return['producto'] = $product;
+      $product->save();
+      $return['rs'] = "Se Actualizo satisfactoriamete el producto";
+      return response()->json($return,200);
 
-      if ($hasFile) {
-        $extension = $request->cover->extension();//devuelve la extension que queremos subir
-      }
-      $product->extension = $extension;
-
-      if($product->save()){
-        if ($hasFile) {
-          //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-          $request->cover->storeAs('images',$product->id.".".$extension);
-        }
-        return redirect("/products");
-      }else{
-        return view("products.edit",['product'=>$product]);
-      }
     }
 
     /**
@@ -155,7 +148,14 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-      Product::destroy($id);
-      return redirect("/products");
+      // Product::destroy($id);
+      // return redirect("/products");
+      $return = array();
+      $product = Product::find($id);
+      $return['producto'] = $product;
+      $product->delete();
+      $return['rs'] = "Se elimino satisfactoriamete el producto";
+      return response()->json($return,200);
+
     }
 }

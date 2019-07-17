@@ -84,6 +84,9 @@ Vue.component('product-component', require('./components/ProductComponent.vue'))
 Vue.component('admin-component', require('./components/AdminComponent.vue'));
 Vue.component('boxes-component', require('./components/BoxesComponent.vue'));
 Vue.component('box-component', require('./components/BoxComponent.vue'));
+Vue.component('ProductosForm-component', require('./components/productos/ProductosForm.vue'));
+Vue.component('ProductosTable-component', require('./components/productos/ProductosTable.vue'));
+Vue.component('Productos-component', require('./components/productos/Productos.vue'));
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))

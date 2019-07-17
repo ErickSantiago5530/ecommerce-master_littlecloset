@@ -16,18 +16,11 @@ Route::get('/', 'MainController@home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/products', 'ProductsController@index');
-Route::get('/products/create', 'ProductsController@create');//muestra formulario nuevo producto
-Route::post('/products/', 'ProductsController@store');//guarda producto
-Route::get('/products/{id}/edit', 'ProductsController@edit');//obtiene los datos para actualizar prooducto
-Route::patch('/products/{id}', 'ProductsController@update');//actualiza el producto
-Route::delete('/products/{id}', 'ProductsController@destroy');//elimina producto
-// Route::get('/products/{id}', 'ProductsController@show');//muestra detalles producto
+// Route::get('/products', 'ProductsController@index');
+// Route::get('/products/{id}', 'ProductsController@edit');
 Route::get('/carrito','ShoppingCartsController@index');
 Route::post('/carrito','ShoppingCartsController@checkout');
 Route::get('/payments/store','PaymentsController@store');
-// Route::get('/products/unsoloproducto','ProductsController@unsoloproducto');
-Route::get('products/unsoloproducto/{id}',"ProductsController@unsoloproducto");
 Route::get('products/images/{filename}',function($filename){
   $path = storage_path("app/images/".$filename);
   if (!\File::exists($path)){
@@ -55,3 +48,6 @@ Route::resource('orders','OrdersController',[
 Route::resource('boxes','BoxesController',[
   'only' => ['index','update']
 ]);
+
+// Route::apiResource('products','ProductsController');
+Route::Resource('products','ProductsController');
