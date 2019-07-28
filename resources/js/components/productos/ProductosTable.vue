@@ -21,8 +21,9 @@
       <p v-else> {{producto.id_categoria}}</p>
     </td>
     <td class="espaciotable border">
-      <button v-if="modoEditar" type="button" name="button" class="btn btn-success btn-xs" v-on:click="onClickUpdate">Guardar Cambios</button>
-      <button v-else type="button" name="button" class="btn btn-warning btn-xs" v-on:click="onClickEdit">Edit</button>
+      <!-- <button v-if="modoEditar" type="button" name="button" class="btn btn-success btn-xs" v-on:click="onClickUpdate">Guardar Cambios</button>
+      <button v-else type="button" name="button" class="btn btn-warning btn-xs" v-on:click="onClickEdit">Edit</button> -->
+      <button  type="button" name="button" class="btn btn-warning btn-xs" v-on:click="onClickEditForm">Edit</button>
     </td>
     <td class="espaciotable border"><button type="button" name="button" class="btn btn-danger btn-xs" v-on:click="onClickDelete">Delete</button></td>
   </tr>
@@ -66,6 +67,10 @@
               alert(response.data.rs)
             })
           },
+          onClickEditForm(){
+            console.log(this.producto);
+            this.$emit('actualizar',this.producto)
+          }
         }
     }
 </script>

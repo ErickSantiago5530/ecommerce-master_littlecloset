@@ -85,6 +85,7 @@ Vue.component('admin-component', require('./components/AdminComponent.vue'));
 Vue.component('boxes-component', require('./components/BoxesComponent.vue'));
 Vue.component('box-component', require('./components/BoxComponent.vue'));
 Vue.component('ProductosForm-component', require('./components/productos/ProductosForm.vue'));
+Vue.component('ProductosEdit-component', require('./components/productos/ProductosEdit.vue'));
 Vue.component('ProductosTable-component', require('./components/productos/ProductosTable.vue'));
 Vue.component('Productos-component', require('./components/productos/Productos.vue'));
 

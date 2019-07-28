@@ -12,10 +12,10 @@
   <!-- Navigation -->
   <div class="menu_nav">
     <ul>
-      <li><a href="#">Women</a></li>
-      <li><a href="#">Men</a></li>
-      <li><a href="#">Kids</a></li>
-      <li><a href="#">Home Deco</a></li>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Uniformes</a></li>
+      <li><a href="#">Urbano</a></li>
+      <li><a href="#">Login</a></li>
       <li><a href="#">Contact</a></li>
       @guest
           <li>
@@ -76,12 +76,13 @@
     </div>
     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
     <nav class="main_nav">
-      <ul class="d-flex flex-row align-items-start justify-content-start">
-        <li class="active"><a href="#">Women</a></li>
-        <li><a href="#">Men</a></li>
-        <li><a href="#">Kids</a></li>
-        <li><a href="#">Home Deco</a></li>
-        <li><a href="#">Contact</a></li>
+      <ul class="d-flex flex-row align-items-start justify-content-start">      
+
+        <li class="active"><a href="#">Inicio</a></li>
+        <li><a href="#">Uniformes</a></li>
+        <li><a href="#">Urbano</a></li>
+        <li><a href="{{ url('/login') }}">Login</a></li>
+        <li><a href="{{ url('/contact') }}">Contact</a></li>
       </ul>
     </nav>
     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">

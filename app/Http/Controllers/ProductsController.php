@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductsController extends Controller
 {
@@ -50,15 +51,34 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-      // dd($request);
-      $product = new Product();
+
+      // $this->validate($request, [
+      //     'photo' => 'required|image'
+      // ]);    
+
+      
+      $product = new Product;
       $product->titulo = $request->titulo;
       $product->descripcion = $request->descripcion;
       $product->precio = $request->precio;
       $product->id_categoria = $request->id_categoria;
-      $product->extension = "jpg";
       $product->id_usuario = auth()->id();
-      if ($product->save()) {
+      $product->extension = 'jpg';
+
+      $hasFile  = $request->hasFile('image')&& $request->image->isValid();
+      if($hasFile) {                
+        $file = $request->file('image');
+        $product->extension = $file->getClientOriginalExtension();
+      }
+      if ($product->save()) {    
+        if($hasFile) {        
+          $extension = $file->getClientOriginalExtension();
+          $fileName = $product->id. '.' . $extension;
+          // $path = public_path('images/products/'.$fileName);
+          
+          // Image::make($file)->fit(144, 144)->save($path);
+          $file->storeAs('images/productos/',$product->id.".".$extension);
+        }    
         return response()->json($product,200);
       }else{
         return response()->json(array('resp'=>'Error al guardar Producto'),500);
@@ -103,28 +123,9 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
-      // $product = Product::find($id);
-      // $product->titulo = $request->titulo;
-      // $product->precio = $request->precio;
-      // $product->descripcion = $request->descripcion;
-      // $product->id_usuario = Auth::user()->id;
-      //
-      // if ($hasFile) {
-      //   $extension = $request->cover->extension();//devuelve la extension que queremos subir
-      // }
-      // $product->extension = $extension;
-      //
-      // if($product->save()){
-      //   if ($hasFile) {
-      //     //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-      //     $request->cover->storeAs('images',$product->id.".".$extension);
-      //   }
-      //   return redirect("/products");
-      // }else{
-      //   return view("products.edit",['product'=>$product]);
-      // }
-      // dd($request->titulo);
+      $hasFile=$request->hasFile('image')&& $request->image->isValid();
+      
+      // dd($hasFile);
       $return = array();
       $product = Product::find($id);
       $product->titulo = $request->titulo;
@@ -133,6 +134,16 @@ class ProductsController extends Controller
       $product->id_categoria = $request->id_categoria;
       $product->extension = "jpg";
       $product->id_usuario = auth()->id();
+      if($hasFile) {     
+
+        $file = $request->file('image');
+        $product->extension = $file->getClientOriginalExtension();
+        $fileName = $product->id. '.' . $product->extension;
+        // $path = public_path('images/products/'.$fileName);
+        
+        // Image::make($file)->fit(144, 144)->save($path);
+        $file->storeAs('images/productos/',$product->id.".".$product->extension);
+      }
       $return['producto'] = $product;
       $product->save();
       $return['rs'] = "Se Actualizo satisfactoriamete el producto";
