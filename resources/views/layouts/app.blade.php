@@ -25,11 +25,15 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="{{ url('styles/bootstrap-4.1.2/bootstrap.min.css') }}">
     <link href="{{ url('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('plugins/fontawesome-5.9.0/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('plugins/fontawesome-5.9.0/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('styles/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('styles/cart.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('styles/cart_responsive.css') }}">
 
 </head>
 <body>

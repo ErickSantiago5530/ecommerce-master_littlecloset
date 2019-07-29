@@ -51,3 +51,4 @@ Route::resource('boxes','BoxesController',[
 
 // Route::apiResource('products','ProductsController');
 Route::Resource('products','ProductsController');
+Route::Resource('carrito','ShoppingCartsController');

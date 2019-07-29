@@ -1,26 +1,21 @@
 <?php
 
 namespace App;
+use DB;
+
 
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     //
-    private function getproducto($id){
-
+    public static function getproducto(){
+      $query = 'SELECT p.*,cat.nombre AS nombre_categoria 
+                FROM products p
+                INNER JOIN categorias cat ON p.id_categoria = cat.id';
+      $productos = DB::select($query);
+      return $productos;
     }
 
-    public function scopeLatest($query){
-      return $query->orderBy("id","desc");
-    }
-
-    public function paypalItem($product){
-      return \PaypalPayment::item()
-              ->setName($product->titulo)
-              ->setDescription($product->descripcion)
-              ->setCurrency('USD')
-              ->setQuantity(1)
-              ->setPrice($product->precio/100);
-    }
+    
 }

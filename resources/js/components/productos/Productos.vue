@@ -9,8 +9,8 @@
             <td class="espacio border">Descripcion</td>
             <td class="espacio border">Precio</td>
             <td class="espacio border">Categoria</td>
-            <td class="espacio border">Editar</td>
-            <td class="espacio border">Eliminar</td>
+            <td class=" border">Editar</td>
+            <td class=" border">Eliminar</td>
           </thead>
           <tbody>
             <ProductosTable-component

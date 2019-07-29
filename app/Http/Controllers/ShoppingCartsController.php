@@ -35,7 +35,10 @@ class ShoppingCartsController extends Controller
       $products = $shopping_cart->products()->get();
       $total = ($shopping_cart->total()==="0"||$shopping_cart->total()===0)?"0.00":$shopping_cart->total();
       // var_dump($total);die();
-      return view("shopping_carts.index",["products"=>$products,"total"=>$total]);
+      $return['products'] = $products;
+      $return['total'] = $total;
+      return response()->json($return,200);
+    //   return view("shopping_carts.index",["products"=>$products,"total"=>$total]);
     }
 
     /**

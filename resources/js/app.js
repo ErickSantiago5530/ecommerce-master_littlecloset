@@ -88,6 +88,8 @@ Vue.component('ProductosForm-component', require('./components/productos/Product
 Vue.component('ProductosEdit-component', require('./components/productos/ProductosEdit.vue'));
 Vue.component('ProductosTable-component', require('./components/productos/ProductosTable.vue'));
 Vue.component('Productos-component', require('./components/productos/Productos.vue'));
+Vue.component('Carrito-component', require('./components/carrito/CarritoComponent.vue'));
+Vue.component('Carritoform-component', require('./components/carrito/CarritoFormComponent.vue'));
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))

@@ -115,9 +115,6 @@
             </div>
           </div>
         </div>
-
-
-
         <products-component></products-component>
         <div class="row load_more_row">
           <div class="col">

@@ -19,6 +19,7 @@
             console.log('Component mounted. Producs Vue')
             axios.get('/products/').then((response)=>{
                 this.products = response.data;
+                console.log(response.data)
             })
         }
     }

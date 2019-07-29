@@ -2,18 +2,20 @@
 
   <div class="col-xl-4 col-md-6">
     <div class="product">
-      <div class="product_image"><img src="images/product_1.jpg" alt=""></div>
+      <div class="product_image"><img :src="this.src_imagen" alt=""></div>
+      <!-- <div class="product_image"><img src="/products/images/1.jpg" alt=""></div> -->
       <div class="product_content">
         <div class="product_info d-flex flex-row align-items-start justify-content-start">
           <div>
             <div>
               <div class="product_name"><a href="product.html">{{ product.titulo }}</a></div>
-              <div class="product_category">En <a href="category.html">Category</a></div>
+              <div class="product_category">En <a href="category.html">{{ product.nombre_categoria }}</a></div>
             </div>
           </div>
           <div class="ml-auto text-right">
             <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="product_price text-right">$3<span>.99</span></div>
+            <div class="product_price text-right">${{ this.precio }}<span>.{{ this.centavos }}</span></div>
+            <!-- <div class="product_price text-right"> {{ this.precio }}</div> -->
           </div>
         </div>
         <div class="product_buttons">
@@ -36,10 +38,32 @@
     export default {
       props: ['product'],
       data(){
-        return {};
+        return {
+          id:'',
+          precio:'60',
+          centavos:'',
+          titulo:'',
+          descripcion:'',
+          src_imagen:''
+        };
       },
       mounted() {
-          console.log('Component mounted.')
+          this.dividePrecio(this.product.precio);
+          this.cargaimagen(this.product.imagen);
+
+      },
+      methods:{
+        dividePrecio(precio){
+          let porciones = precio.split('.');
+          this.precio = porciones[0]
+          if(porciones.length>0){
+            this.centavos = porciones[1]
+          }
+        },
+        cargaimagen(img){
+          this.src_imagen = '/products/images/productos/'+this.product.id+"."+this.product.extension 
+          console.log(this.src_imagen);         
+        }
       }
     }
 </script>

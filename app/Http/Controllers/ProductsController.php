@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // use App\Http\Request;
 use App\Product;
+use App\Categoria;
 use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -23,7 +24,8 @@ class ProductsController extends Controller
     {
         //
         // dd(auth()->id());
-        $products = Product::all();
+        
+        $products = Product::getproducto();        
         // $id_usuario = auth()->id();
         // $products = Product::where('id_usuario',auth()->id());
         // dd($products);
