@@ -1,6 +1,6 @@
 <template>
   <!-- Preloader -->
-  <div class="container">
+  <div class="containeradmin">
     <h1>hola admin</h1>
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 border">
@@ -17,7 +17,7 @@
 </template>
 
 <style media="screen">
-  .container{
+  .containeradmin{
     padding-top: 50px;
   }
   .border{

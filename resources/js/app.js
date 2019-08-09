@@ -80,19 +80,21 @@ console.log(window.Vue);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('admin-component', require('./components/AdminComponent.vue'));
+
+//layouts
+Vue.component('Home-component', require('./components/layouts/HomeComponent.vue'));
+Vue.component('Homeproductos-component', require('./components/layouts/HomeproductosComponent.vue'));
 // boxes Admin
 Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));
 Vue.component('BoxesTable-component', require('./components/boxes/BoxesTableComponent.vue'));
 Vue.component('BoxesEdit-component', require('./components/boxes/BoxesEditComponent.vue'));
 Vue.component('BoxesForm-component', require('./components/boxes/BoxesFormComponent.vue'));
 // Productos Admin
-Vue.component('ProductosForm-component', require('./components/productos/ProductosForm.vue'));
-Vue.component('ProductosEdit-component', require('./components/productos/ProductosEdit.vue'));
-Vue.component('ProductosTable-component', require('./components/productos/ProductosTable.vue'));
-Vue.component('Productos-component', require('./components/productos/Productos.vue'));
-//Carrito Admin
-Vue.component('Carrito-component', require('./components/carrito/CarritoComponent.vue'));
-Vue.component('Carritoform-component', require('./components/carrito/CarritoFormComponent.vue'));
+Vue.component('ProductosForm-component', require('./components/productos/ProductosFormComponent.vue'));
+Vue.component('ProductosEdit-component', require('./components/productos/ProductosEditComponent.vue'));
+Vue.component('ProductosTable-component', require('./components/productos/ProductosTableComponent.vue'));
+Vue.component('Productos-component', require('./components/productos/ProductosComponent.vue'));
+
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -104,8 +106,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 
 const app = new Vue({
-     el: '#home',
-    // el: '#app',
+    el: '#app',
     data: {
       message: 'Hello Vue!'
     }
