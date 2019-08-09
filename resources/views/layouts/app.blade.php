@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('styles/bootstrap-4.1.2/bootstrap.min.css') }}">
     <link href="{{ url('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('plugins/fontawesome-5.9.0/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ url('plugins/fontawesome-5.9.0/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('plugins/sweetalert/sweetalert2.min.js') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/animate.css') }}">
@@ -64,6 +64,7 @@
     <script src="{{ url('plugins/greensock/animation.gsap.min.js')}}"></script>
     <script src="{{ url('plugins/greensock/ScrollToPlugin.min.js')}}"></script>
     <script src="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+    <script src="{{ url('plugins/sweetalert/sweetalert2.min.js')}}"></script>
     <script src="{{ url('plugins/easing/easing.js')}}"></script>
     <script src="{{ url('plugins/progressbar/progressbar.min.js')}}"></script>
     <script src="{{ url('plugins/parallax-js-master/parallax.min.js')}}"></script>

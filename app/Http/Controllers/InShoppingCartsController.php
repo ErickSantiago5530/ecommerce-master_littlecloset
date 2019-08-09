@@ -19,14 +19,15 @@ class InShoppingCartsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
       $shopping_cart = $request->shopping_cart;
-
+      
       $response = InShoppingCart::create([
         "shopping_cart_id" => $shopping_cart->id,
-        "product_id" => $request->product_id
-      ]);
-
+        "product_id" => $request->id
+        ]);
+        
+      // dd($response);
       if($request->Ajax()){
         return response()->json([
           'products_count' => InShoppingCart::productsCount($shopping_cart->id)
@@ -34,12 +35,17 @@ class InShoppingCartsController extends Controller
       }
 
       // var_dump($response);die();
-      if($response){
-        return redirect('/carrito');
-        // return redirect('/home');
-      }else{
-        return back();
-      }
+      // if($response){
+      //   return redirect('/carrito');
+      //   // return redirect('/home');
+      // }else{
+      //   return back();
+      // }
+      $respuesta['products_count'] = InShoppingCart::productsCount($shopping_cart->id);
+      $respuesta['rs'] = 'success';
+      $respuesta['desc'] = 'Se agrego correctamente el '.$request->titulo.'a tu carrito';
+      return response()->json($respuesta);
+
     }
 
     /**

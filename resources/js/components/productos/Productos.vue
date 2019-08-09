@@ -38,7 +38,7 @@
             </div>
             <div class="modal-body">
               <ProductosForm-component v-if="mostrarProductosForm" @new='agregarProducto'></ProductosForm-component>
-              <ProductosEdit-component v-else :producto="producto_edit" @new='agregarProducto'></ProductosEdit-component>
+              <ProductosEdit-component v-else :producto="producto_edit" @actualiza='editaProducto'></ProductosEdit-component>
             </div>
           </div>
         </div>
@@ -76,7 +76,6 @@
           },
           onClickAgregarProducto(){
             this.producto_edit.splice(1,this.producto_edit.length);
-            console.log(this.producto_edit);
             this.mostrarProductosForm = true;
             $('#modal-form').modal('show')
             console.log(this.mostrarProductosForm);
@@ -84,13 +83,24 @@
           cerrarmodalForm(){
             $('#modal-form').modal('hide')
           },
+          editaProducto(producto){
+            for (let index = 0; index < this.productos.length; index++) {
+              if (this.productos[index].id==producto.id) {
+                this.productos[index] = producto;
+              }              
+            }
+            axios.get('/products').then((response)=>{
+              console.log(response);
+              this.productos = response.data;
+            });
+          },
           cerrarModallg(){
 
           },
           actualizarFormProducto(index){
             // this.producto_edit.push(this.productos[index]);
-            this.producto_edit[0] = this.productos[index];
             this.mostrarProductosForm = false;
+            this.producto_edit.push(this.productos[index]);
             $('#modal-form').modal('show')
 
           },

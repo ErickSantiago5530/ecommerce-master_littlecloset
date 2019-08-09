@@ -1,15 +1,14 @@
 <?php
 
 namespace App;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Boxes extends Model
 {
     //
-    private function getproducto($id){
 
-    }
 
     public function scopeLatest($query){
       return $query->orderBy("id","desc");
@@ -22,5 +21,11 @@ class Boxes extends Model
               ->setCurrency('USD')
               ->setQuantity(1)
               ->setPrice($product->precio/100);
+    }
+
+    public static function obtenultimoID(){
+      $query = 'SELECT MAX(id) id FROM boxes';
+      $ultimobox = DB::select($query)[0];
+      return $ultimobox->id+1;
     }
 }

@@ -65,10 +65,10 @@ class ProductsController extends Controller
       $product->precio = $request->precio;
       $product->id_categoria = $request->id_categoria;
       $product->id_usuario = auth()->id();
-      $product->extension = 'jpg';
+      $product->extension = 'jpg';     
 
       $hasFile  = $request->hasFile('image')&& $request->image->isValid();
-      if($hasFile) {                
+      if($hasFile) { 
         $file = $request->file('image');
         $product->extension = $file->getClientOriginalExtension();
       }

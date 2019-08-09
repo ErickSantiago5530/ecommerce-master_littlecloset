@@ -4,24 +4,15 @@
     <h1>hola admin</h1>
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 border">
-        <button v-if="mostrarProductos" class="btn btn-warning" type="button" name="button" v-on:click="onClickOcultarProductos()">Productos</button>
-        <button v-else class="btn btn-primary" type="button" name="button" v-on:click="onClickMostrarProductos()">Productos</button>
+        <button class="btn btn-primary pading_buton" type="button" name="button" v-on:click="onClickMostrar('productos')">Productos</button>
+        <button class="btn btn-primary pading_buton" type="button" name="button" v-on:click="onClickMostrar('boxes')">Boxes</button>
+
       </div>
       <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 border">
         <Productos-component v-if="mostrarProductos"></Productos-component>
+        <boxes-component v-if="mostrarBoxes"></boxes-component>
       </div>
     </div>
-    <div class="modal fade" id="modal-sm" tabindex="-1" role="dialog" aria-labelledby="modalCrudPhalconLabel" aria-hidden="true" style=" display: none;" data-backdrop="static" data-keyboard="false">
-      	<div class="modal-dialog modal-sm">
-      		<div class="modal-content">
-      			<div class="modal-header encabezado_modal">
-              <div class="modal-title titulo_modal"></div>
-      				<button type="button" class="close" aria-hidden="true" v-on:click="cerrarModalsm">×</button>
-      			</div>
-      			<div class="modal-body"> </div>
-      		</div>
-      	</div>
-      </div>
   </div>
 </template>
 
@@ -38,6 +29,9 @@
   .espaciotable{
     padding: 2px;
   }
+  .pading_buton{
+    padding:1px;
+  }
 </style>
 
 <script>
@@ -45,16 +39,30 @@
       data(){
         return {
           mostrarProductos :false,
+          mostrarBoxes :false,
         };
       },
       mounted() {
+
       },
       methods:{
-        onClickMostrarProductos(){
-          this.mostrarProductos = true;
-        },
-        onClickOcultarProductos(){
-          this.mostrarProductos = false;
+        onClickMostrar(component){
+          console.log('usted pucho'+component);          
+          switch (component) {
+            case 'productos':
+              this.mostrarProductos=true;
+              this.mostrarBoxes =false;
+              break;
+            case 'boxes':
+            this.mostrarProductos=false;
+            this.mostrarBoxes =true;
+            break;
+          
+            default:
+              this.mostrarProductos=false;
+              this.mostrarBoxes =false;
+              break;              
+          }
         },
         cerrarModalsm(){
 

@@ -95,7 +95,6 @@
                 'Content-Type': 'multipart/form-data'
               }
             }).then((response)=>{
-              console.log(response);
               const producto = response.data;
               this.$emit('new',producto);
             });

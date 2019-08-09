@@ -33,13 +33,7 @@ class BoxesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $product = new Product;
-        return view('products.create',["product"=>$product]);
-    }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -47,27 +41,43 @@ class BoxesController extends Controller
      */
     public function store(Request $request)
     {
-
-      $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
-      $product = new Product;
-      $product->titulo = $request->titulo;
-      $product->precio = $request->precio;
-      $product->descripcion = $request->descripcion;
-      $product->id_usuario = Auth::user()->id;
+      $ultimoBoxID = Boxes::obtenultimoID();
+      $hasFile  = $request->hasFile('image')&& $request->image->isValid();
+      $boxes = new Boxes;
+      $boxes->titulo = $request->titulo;
+      $boxes->nombre = $request->nombre;
+      $boxes->descripcion = $request->descripcion;
+      // $boxes->id_usuario = Auth::user()->id;     
+      $boxes->extension = ".jpg";
+      // dd($hasFile);
 
       if ($hasFile) {
-        $extension = $request->cover->extension();//devuelve la extension que queremos subir
-      }
-      $product->extension = $extension;
-      if($product->save()){
-        if ($hasFile) {
-          //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-          $request->cover->storeAs('images',$product->id.".".$extension);
+        //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
+        $file = $request->file('image');
+        $boxes->img1 = $ultimoBoxID.".".$file->getClientOriginalExtension();
+        if($request->hasFile('image2')&& $request->image2->isValid()){
+          $file2 = $request->file('image2');
+          $extension2 = $file2->getClientOriginalExtension();          
+          $boxes->img2 = $ultimoBoxID."_fondo.".$extension2;
         }
+      }
+      if($boxes->save()){
+        if ($hasFile) {
+          $file = $request->file('image');
+          // dd($file->getClientOriginalName());
 
-        return redirect("/products");
+          //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
+          $extension = $file->getClientOriginalExtension();
+          $request->image->storeAs('images/boxes/',$boxes->id.".".$extension);
+          if($request->hasFile('image2')&& $request->image2->isValid()){
+            $file2 = $request->file('image2');
+            $extension2 = $file2->getClientOriginalExtension();
+            $request->image2->storeAs('images/boxes/',$boxes->id."_fondo.".$extension2);
+          }
+        }        
+        return response()->json($boxes,200);
       }else{
-        return view("products.create",['product'=>$product]);
+        return response()->json(array('resp'=>'Error al guardar Boxes'),500);
       }
 
     }
@@ -86,35 +96,12 @@ class BoxesController extends Controller
       return response()->json($product,200);
 
     }
-
-    public function unsoloproducto($id){
-      $products = Product::all();
-      foreach ($products as $producto ) {
-        if($producto->id == $id){
-          return $producto;
-        }
-      }
-      // $resultados = DB::select("SELECT * from products");
-      // echo $products;
-      // $users = User::all();
-      return response()->json($products,200);
-      // $id = 5;
-        // $product = Product::find($id);
-    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-      // var_dump($id);die();
-      $product = Product::find($id);
-      return view("products.edit",["product"=>$product]);
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -124,26 +111,36 @@ class BoxesController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $hasFile  = $request->hasFile('cover')&& $request->cover->isValid();
-      $product = Product::find($id);
-      $product->titulo = $request->titulo;
-      $product->precio = $request->precio;
-      $product->descripcion = $request->descripcion;
-      $product->id_usuario = Auth::user()->id;
+      // dd($request,$id);
+      $hasFile  = $request->hasFile('image')&& $request->image->isValid();
+      $boxes = Boxes::find($id);
+      $boxes->titulo = $request->titulo;
+      $boxes->nombre = $request->nombre;
+      $boxes->descripcion = $request->descripcion;
+      // $boxes->id_usuario = Auth::user()->id;
 
       if ($hasFile) {
-        $extension = $request->cover->extension();//devuelve la extension que queremos subir
+        $file = $request->file('image');
+        $boxes->img1 = $id.".".$file->getClientOriginalExtension();
+        if($request->hasFile('image2')&& $request->image2->isValid()){
+          $file2 = $request->file('image2');
+          $extension2 = $file2->getClientOriginalExtension();          
+          $boxes->img2 = $id."_fondo.".$extension2;
+        }
       }
-      $product->extension = $extension;
 
-      if($product->save()){
+      if($boxes->save()){
         if ($hasFile) {
           //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-          $request->cover->storeAs('images',$product->id.".".$extension);
+          $request->image->storeAs('images',$id.".".$file->getClientOriginalExtension());
+          if($request->hasFile('image2')&& $request->image2->isValid()){
+            $request->image2->storeAs('images',$id."_fondo.".$extension2);
+          }
         }
-        return redirect("/products");
+        return response()->json($boxes,200);        
       }else{
-        return view("products.edit",['product'=>$product]);
+        return response()->json(array('resp'=>'Error al guardar Boxes'),500);
+        
       }
     }
 

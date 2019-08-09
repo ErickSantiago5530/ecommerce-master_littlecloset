@@ -98,9 +98,9 @@
        @else
          <div class="user"><a href="{{ url('/home') }}"><div><img class="svg" src=" {{ url('images/user.svg') }}" alt=""><div>{{ strtoupper(substr(Auth::user()->name,0,1)) }}</div></div></a></div>
        @endguest
-      <div class="user"><a href="cart.html"><div><img class="svg" src=" {{ url('images/cart.svg') }}" alt=""><div>{{ $productsCount }}</div></div></a></div>
+      <div class="user"><a href="cart.html"><div><img class="svg" src=" {{ url('images/cart.svg') }}" alt=""><div id="productCount">{{ $productsCount }}</div></div></a></div>
       <!-- Cart -->
-      {{-- <div class="cart"><a href="cart.html"><div><img class="svg" src=" {{ url('images/cart.svg') }}" alt=""></div></a></div> --}}
+      <!-- {{-- <div class="cart"><a href="cart.html"><div><img class="svg" src=" {{ url('images/cart.svg') }}" alt=""></div></a></div> --}} -->
       <!-- Phone -->
       <div class="header_phone d-flex flex-row align-items-center justify-content-start">
         <div><div><img src=" {{ url('images/phone.svg') }}" alt=""></div></div>

@@ -79,33 +79,41 @@
         },
         mounted() {
           console.log('Component mounted EDIT')
-          if (this.producto.length>0) {
-            this.id = this.producto[0].id;
-            this.titulo = this.producto[0].titulo;
-            this.descripcion = this.producto[0].descripcion;
-            this.precio = this.producto[0].precio;
-            this.id_categoria = this.producto[0].id_categoria;
-          }
-
+          console.log(this.producto)
+          this.agregarDatos()
         },
         methods:{
+          agregarDatos(){
+            this.limpiarinputs();
+            if (this.producto.length>0) {
+              var index = this.producto.length-1;
+              this.id = this.producto[index].id;
+              this.titulo = this.producto[index].titulo;
+              this.descripcion = this.producto[index].descripcion;
+              this.precio = this.producto[index].precio;
+              this.id_categoria = this.producto[index].id_categoria;
+            }
+          },
+          limpiarinputs(){
+            this.id = "";
+            this.titulo =  ""; 
+            this.descripcion =  ""; 
+            this.precio =  ""; 
+            this.id_categoria =  ""; 
+          },
           processFile(event) {
             console.log(event);
             this.imagen = event.target.files[0]
           },
           onSubmitActualizaProducto(){
-            console.log('emitiendo producto');
             var formData = new FormData();
             var imagefile = document.querySelector('#file');
-            console.log(imagefile);
             formData.append("titulo",this.titulo);
             formData.append("descripcion",this.descripcion);
             formData.append("precio",this.precio);
             formData.append("id_categoria",this.id_categoria);            
             formData.append('_method', 'PATCH');
             formData.append("image", imagefile.files[0]);
-            console.log('Este es el formData');
-            console.log(formData);
             
             axios.post('/products/'+this.id,formData,{
               headers: {
@@ -113,8 +121,8 @@
               }
             }).then((response)=>{
               console.log(response.data);
-              alert(response.data.rs);
               $('#modal-form').modal('hide')
+              this.$emit('actualiza',response.data.producto);
             });
           },
         }

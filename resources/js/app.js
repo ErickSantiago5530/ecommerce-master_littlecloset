@@ -19,8 +19,8 @@
    //   ]
    // });
    init()
- });
-
+});
+  
 function init(){
   console.log('en esta parte inicia todo el init ;)');
 
@@ -79,15 +79,18 @@ console.log(window.Vue);
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('products-component', require('./components/ProductsComponent.vue'));
-Vue.component('product-component', require('./components/ProductComponent.vue'));
 Vue.component('admin-component', require('./components/AdminComponent.vue'));
-Vue.component('boxes-component', require('./components/BoxesComponent.vue'));
-Vue.component('box-component', require('./components/BoxComponent.vue'));
+// boxes Admin
+Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));
+Vue.component('BoxesTable-component', require('./components/boxes/BoxesTableComponent.vue'));
+Vue.component('BoxesEdit-component', require('./components/boxes/BoxesEditComponent.vue'));
+Vue.component('BoxesForm-component', require('./components/boxes/BoxesFormComponent.vue'));
+// Productos Admin
 Vue.component('ProductosForm-component', require('./components/productos/ProductosForm.vue'));
 Vue.component('ProductosEdit-component', require('./components/productos/ProductosEdit.vue'));
 Vue.component('ProductosTable-component', require('./components/productos/ProductosTable.vue'));
 Vue.component('Productos-component', require('./components/productos/Productos.vue'));
+//Carrito Admin
 Vue.component('Carrito-component', require('./components/carrito/CarritoComponent.vue'));
 Vue.component('Carritoform-component', require('./components/carrito/CarritoFormComponent.vue'));
 

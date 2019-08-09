@@ -40,7 +40,6 @@
         },
         methods:{
           onClickEdit(){
-            console.log('eshora de editar');
             this.modoEditar = true;
           },
           onClickUpdate(){
@@ -51,13 +50,10 @@
               id_categoria:this.producto.id_categoria
             }
             axios.put('/products/'+this.producto.id,params).then((response)=>{
-              console.log(response);
               this.modoEditar = false;
               const producto = response.data.producto;
               this.$emit('update',producto)
-              alert(response.data.rs)
             })
-
           },
           onClickDelete(){
             axios.delete('/products/'+this.producto.id).then((response)=>{
