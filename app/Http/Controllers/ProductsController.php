@@ -171,4 +171,9 @@ class ProductsController extends Controller
       return response()->json($return,200);
 
     }
+
+    public function productosHome(){
+      $products = Product::getproductosHome();  
+      return response()->json($products,200);
+    }
 }

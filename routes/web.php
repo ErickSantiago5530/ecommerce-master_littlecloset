@@ -22,7 +22,12 @@ Route::get('/payments/store','PaymentsController@store');
 Route::resource('compras','ShoppingCartsController',['only' => ['show']]);
 Route::resource('in_shopping_carts','InShoppingCartsController',['only' => ['store','destroy']]);
 Route::resource('orders','OrdersController',['only' => ['index','update']]);
-Route::resource('boxes','BoxesController');
+
+/*Productos */
 // Route::apiResource('products','ProductsController');
 Route::Resource('products','ProductsController');
+Route::get('/productsHome','ProductsController@productosHome');
+/*Carrito */
 Route::Resource('carrito','ShoppingCartsController');
+/*Boxes */
+Route::resource('boxes','BoxesController');

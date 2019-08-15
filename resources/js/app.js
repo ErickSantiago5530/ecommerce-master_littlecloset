@@ -84,6 +84,9 @@ Vue.component('admin-component', require('./components/AdminComponent.vue'));
 //layouts
 Vue.component('Home-component', require('./components/layouts/HomeComponent.vue'));
 Vue.component('Homeproductos-component', require('./components/layouts/HomeproductosComponent.vue'));
+Vue.component('Homeproduct-component', require('./components/layouts/producto/HomeproductComponent.vue'));
+Vue.component('Homeboxes-component', require('./components/layouts/HomeboxesComponent.vue'));
+Vue.component('Homefeatures-component', require('./components/layouts/HomefeaturesComponent.vue'));
 // boxes Admin
 Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));
 Vue.component('BoxesTable-component', require('./components/boxes/BoxesTableComponent.vue'));
