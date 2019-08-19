@@ -53,6 +53,10 @@ Vue.component('Homeproduct-component', require('./components/layouts/producto/Ho
 Vue.component('Homeboxes-component', require('./components/layouts/HomeboxesComponent.vue'));
 Vue.component('Homebox-component', require('./components/layouts/box/HomeboxComponent.vue'));
 Vue.component('Homefeatures-component', require('./components/layouts/HomefeaturesComponent.vue'));
+// Carrucel
+Vue.component('Slide-component', require('./components/layouts/home/SlideComponent.vue'));
+Vue.component('Carrucel-component', require('./components/layouts/home/CarrucelComponent.vue'));
+
 // boxes Admin
 Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));
 Vue.component('BoxesTable-component', require('./components/boxes/BoxesTableComponent.vue'));
