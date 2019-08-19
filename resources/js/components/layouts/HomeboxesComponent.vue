@@ -6,55 +6,13 @@
 					<div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
 
 						<!-- Box -->
-						<div class="box">
-							<div class="background_image" style="background-image:url(images/box_1.jpg)"></div>
-							<div class="box_content d-flex flex-row align-items-center justify-content-start">
-								<div class="box_left">
-									<div class="box_image">
-										<a href="category.html">
-											<div class="background_image" style="background-image:url(images/box_1_img.jpg)"></div>
-										</a>
-									</div>
-								</div>
-								<div class="box_right text-center">
-									<div class="box_title">Trendsetter Collection</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Box -->
-						<div class="box">
-							<div class="background_image" style="background-image:url(images/box_2.jpg)"></div>
-							<div class="box_content d-flex flex-row align-items-center justify-content-start">
-								<div class="box_left">
-									<div class="box_image">
-										<a href="category.html">
-											<div class="background_image" style="background-image:url(images/box_2_img.jpg)"></div>
-										</a>
-									</div>
-								</div>
-								<div class="box_right text-center">
-									<div class="box_title">Popular Choice</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Box -->
-						<div class="box">
-							<div class="background_image" style="background-image:url(images/box_3.jpg)"></div>
-							<div class="box_content d-flex flex-row align-items-center justify-content-start">
-								<div class="box_left">
-									<div class="box_image">
-										<a href="category.html">
-											<div class="background_image" style="background-image:url(images/box_3_img.jpg)"></div>
-										</a>
-									</div>
-								</div>
-								<div class="box_right text-center">
-									<div class="box_title">Popular Choice</div>
-								</div>
-							</div>
-						</div>
+						<Homebox-component
+							v-for="(box) in boxes"
+							:key="box.id"
+							:box="box"
+							:url="url"
+						>
+						</Homebox-component>
 
 					</div>
 				</div>
@@ -65,8 +23,24 @@
 
 <script>
     export default {
+		data(){
+			return {
+				boxes:[],
+				url:"",
+			}
+		},
         mounted() {
-            console.log('Component mounted.')
-        }
+			console.log('Component mounted Boxes')
+			this.obtenBoxes();
+		},
+		methods:{
+			obtenBoxes(){
+				axios.get('/boxesHome').then((response)=>{
+					this.boxes = response.data.boxes;
+					this.url = response.data.url_path;
+				});
+			},
+		}
+		
     }
 </script>

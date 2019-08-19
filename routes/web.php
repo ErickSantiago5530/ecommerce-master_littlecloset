@@ -26,8 +26,13 @@ Route::resource('orders','OrdersController',['only' => ['index','update']]);
 /*Productos */
 // Route::apiResource('products','ProductsController');
 Route::Resource('products','ProductsController');
-Route::get('/productsHome','ProductsController@productosHome');
+/*Home*/
+Route::get('/productsHome','LayoutController@productosHome');
+Route::get('/boxesHome','LayoutController@BoxesHome');
 /*Carrito */
-Route::Resource('carrito','ShoppingCartsController');
+Route::Resource('/carrito','ShoppingCartsController');
 /*Boxes */
-Route::resource('boxes','BoxesController');
+Route::resource('/boxes','BoxesController');
+/*Favoritos */
+Route::resource('/favoritos','FavoritosController',['only' => ['index','store','destroy']]);
+

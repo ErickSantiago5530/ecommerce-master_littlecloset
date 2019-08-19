@@ -25,6 +25,7 @@
 				v-for="(producto) in productos"
 				:key="producto.id"
 				:producto="producto"
+				:url="url"
 				>
 				</Homeproduct-component>			
 
@@ -43,6 +44,8 @@
 		data(){
 			return {				
 				productos:[],
+				categorias:[],
+				url:""
 			}
 		},
         mounted() {
@@ -53,8 +56,9 @@
 			obtenerTodosPoductos(){
 				axios.get('/productsHome').then((response)=>{
 					console.log(response.data)
-					this.productos = response.data;
-
+					this.productos = response.data.productos;
+					this.url = response.data.url_path;
+					this.categorias = response.data.categorias;
 				});
 			},
 			mostrar(nombre){

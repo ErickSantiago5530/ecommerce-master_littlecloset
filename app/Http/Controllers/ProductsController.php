@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use App\Http\Request;
 use App\Product;
 use App\Categoria;
+use App\Images;
 use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -21,9 +22,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-        // dd(auth()->id());
+    {      
         
         $products = Product::getproducto();        
         // $id_usuario = auth()->id();
@@ -56,9 +55,7 @@ class ProductsController extends Controller
 
       // $this->validate($request, [
       //     'photo' => 'required|image'
-      // ]);    
-
-      
+      // ]);          
       $product = new Product;
       $product->titulo = $request->titulo;
       $product->descripcion = $request->descripcion;
@@ -77,9 +74,8 @@ class ProductsController extends Controller
           $extension = $file->getClientOriginalExtension();
           $fileName = $product->id. '.' . $extension;
           // $path = public_path('images/products/'.$fileName);
-          
           // Image::make($file)->fit(144, 144)->save($path);
-          $file->storeAs('images/productos/',$product->id.".".$extension);
+          $file->storeAs('public-images/productos/',$product->id.".".$extension);          
         }    
         return response()->json($product,200);
       }else{
@@ -144,7 +140,7 @@ class ProductsController extends Controller
         // $path = public_path('images/products/'.$fileName);
         
         // Image::make($file)->fit(144, 144)->save($path);
-        $file->storeAs('images/productos/',$product->id.".".$product->extension);
+        $file->storeAs('public/images/productos/',$product->id.".".$product->extension);
       }
       $return['producto'] = $product;
       $product->save();
@@ -170,10 +166,5 @@ class ProductsController extends Controller
       $return['rs'] = "Se elimino satisfactoriamete el producto";
       return response()->json($return,200);
 
-    }
-
-    public function productosHome(){
-      $products = Product::getproductosHome();  
-      return response()->json($products,200);
-    }
+    }    
 }

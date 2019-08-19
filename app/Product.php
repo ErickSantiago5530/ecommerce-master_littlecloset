@@ -24,7 +24,6 @@ class Product extends Model
                 limit 6';
       $productos = DB::select($query);
       return $productos;
-    }
-
+    }   
     
 }

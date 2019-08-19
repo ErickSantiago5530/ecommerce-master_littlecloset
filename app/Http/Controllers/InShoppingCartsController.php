@@ -19,9 +19,8 @@ class InShoppingCartsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {       
       $shopping_cart = $request->shopping_cart;
-      
       $response = InShoppingCart::create([
         "shopping_cart_id" => $shopping_cart->id,
         "product_id" => $request->id

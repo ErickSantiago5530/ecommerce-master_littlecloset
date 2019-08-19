@@ -13,4 +13,10 @@ class Categoria extends Model
         $libros = DB::select('select * from products');
         dd($libros);
     }
+
+    public static function getcategoriasHome(){
+        $query = 'SELECT * FROM categorias limit 5';
+        $categorias = DB::select($query);
+        return $categorias;
+      }
 }

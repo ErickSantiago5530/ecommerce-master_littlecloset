@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use App\Http\Request;
 use App\Product;
 use App\Boxes;
+use App\Images;
 use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,11 +69,11 @@ class BoxesController extends Controller
 
           //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
           $extension = $file->getClientOriginalExtension();
-          $request->image->storeAs('images/boxes/',$boxes->id.".".$extension);
+          $request->image->storeAs('public/images/boxes/',$boxes->id.".".$extension);
           if($request->hasFile('image2')&& $request->image2->isValid()){
             $file2 = $request->file('image2');
             $extension2 = $file2->getClientOriginalExtension();
-            $request->image2->storeAs('images/boxes/',$boxes->id."_fondo.".$extension2);
+            $request->image2->storeAs('public/images/boxes/',$boxes->id."_fondo.".$extension2);
           }
         }        
         return response()->json($boxes,200);
@@ -132,9 +133,9 @@ class BoxesController extends Controller
       if($boxes->save()){
         if ($hasFile) {
           //la imagen se guardara en una carpeta temp llamada images con el nombre $id.$extension
-          $request->image->storeAs('images',$id.".".$file->getClientOriginalExtension());
+          $request->image->storeAs('public/images/boxes/',$id.".".$file->getClientOriginalExtension());
           if($request->hasFile('image2')&& $request->image2->isValid()){
-            $request->image2->storeAs('images',$id."_fondo.".$extension2);
+            $request->image2->storeAs('public/images/boxes/',$id."_fondo.".$extension2);
           }
         }
         return response()->json($boxes,200);        
@@ -154,5 +155,5 @@ class BoxesController extends Controller
     {
       Product::destroy($id);
       return redirect("/products");
-    }
+    }    
 }

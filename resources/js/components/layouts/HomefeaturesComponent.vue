@@ -10,7 +10,7 @@
 							<div class="feature_icon"><img src="images/icon_1.svg" alt=""></div>
 						</div>
 						<div class="feature_right d-flex flex-column align-items-start justify-content-center">
-							<div class="feature_title">Fast Secure Payments</div>
+							<div class="feature_title">Pagos Rapidos y Seguros</div>
 						</div>
 					</div>
 				</div>
@@ -22,7 +22,7 @@
 							<div class="feature_icon ml-auto mr-auto"><img src="images/icon_2.svg" alt=""></div>
 						</div>
 						<div class="feature_right d-flex flex-column align-items-start justify-content-center">
-							<div class="feature_title">Premium Products</div>
+							<div class="feature_title">Productos de calidad y 100% mexicano</div>
 						</div>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 							<div class="feature_icon"><img src="images/icon_3.svg" alt=""></div>
 						</div>
 						<div class="feature_right d-flex flex-column align-items-start justify-content-center">
-							<div class="feature_title">Free Delivery</div>
+							<div class="feature_title">Envios a todo MEXICO</div>
 						</div>
 					</div>
 				</div>

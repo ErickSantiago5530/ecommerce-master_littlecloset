@@ -25,45 +25,10 @@ function init(){
   console.log('en esta parte inicia todo el init ;)');
 
 }
- $(".add-to-cart").on("submit",function(e){
-   e.preventDefault();
-
-   var $form = $(this);
-   var $button = $form.find("[type='submit']");
-
-   //peticion ajax
-   $.ajax({
-     url:$form.attr("action"),
-     method:$form.attr("method"),
-     data: $form.serialize(),
-     dataType:"JSON",
-     beforeSend: function(){
-       $button.val("Cargando..");
-     },
-     success: function(data){
-       $button.css("background-color","#00c853").val("Agregado");
-       console.log(data);
-
-       $(".circle-shopping-cart").html(data.products_count);
-       setTimeout(function(){
-         restartButton($button);
-       },2000);
-     },
-     error: function(err){
-       console.log(err);
-       $button.css("background-color","#d50000").val("Hubo error");
-       setTimeout(function(){
-         restartButton($button);
-       },2000);
-     }
-   });
-
-   return false;
- });
-
- function restartButton($button){
+ 
+function restartButton($button){
    $button.val("Agregar al carrito").attr("style","");
- }
+}
 
 
 window.Vue = require('vue');
@@ -86,6 +51,7 @@ Vue.component('Home-component', require('./components/layouts/HomeComponent.vue'
 Vue.component('Homeproductos-component', require('./components/layouts/HomeproductosComponent.vue'));
 Vue.component('Homeproduct-component', require('./components/layouts/producto/HomeproductComponent.vue'));
 Vue.component('Homeboxes-component', require('./components/layouts/HomeboxesComponent.vue'));
+Vue.component('Homebox-component', require('./components/layouts/box/HomeboxComponent.vue'));
 Vue.component('Homefeatures-component', require('./components/layouts/HomefeaturesComponent.vue'));
 // boxes Admin
 Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));

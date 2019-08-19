@@ -28,4 +28,10 @@ class Boxes extends Model
       $ultimobox = DB::select($query)[0];
       return $ultimobox->id+1;
     }
+
+    public static function obtenBoxesHome(){
+      $query = 'SELECT * FROM boxes limit 3';
+      $boxes = DB::select($query);
+      return $boxes;
+    }
 }

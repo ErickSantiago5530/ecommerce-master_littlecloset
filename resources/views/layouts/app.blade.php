@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('styles/bootstrap-4.1.2/bootstrap.min.css') }}">
     <link href="{{ url('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('plugins/fontawesome-5.9.0/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('plugins/alertifyjs/css/alertify.min.css') }}" rel="stylesheet" type="text/css">
     
     <!-- librerias de little-closet -->
     <link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
@@ -46,6 +47,7 @@
     <script src=" {{ url('plugins/easing/easing.js') }}"></script>
     <script src=" {{ url('plugins/progressbar/progressbar.min.js') }}"></script>
     <script src=" {{ url('plugins/parallax-js-master/parallax.min.js') }}"></script>
+    <script src=" {{ url('plugins/alertifyjs/alertify.min.js') }}"></script>
     <script src=" {{ url('js/custom.js') }}"></script>
 
 </body>

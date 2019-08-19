@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             CategoriaTableSeeder::class,
             BoxesTableSeeder::class,
             UsersTableSeeder::class,
+            PermisosTableSeeder::class,
         ]);
     }
 }

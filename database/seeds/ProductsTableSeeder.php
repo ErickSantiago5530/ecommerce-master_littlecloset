@@ -19,5 +19,21 @@ class ProductsTableSeeder extends Seeder
           'id_usuario' => 1,
           'extension' => 'jpg',
       ]);
+      DB::table('products')->insert([
+          'titulo' => 'Goma De borrar',
+          'descripcion' => 'Borrador ideal para la escuela',
+          'precio' => 10.50,
+          'id_categoria' => 1,
+          'id_usuario' => 1,
+          'extension' => 'jpg',
+      ]);
+      DB::table('products')->insert([
+          'titulo' => 'Cargador tipo B',
+          'descripcion' => 'Cargador para celular android tipo B',
+          'precio' => 150,
+          'id_categoria' => 1,
+          'id_usuario' => 1,
+          'extension' => 'jpg',
+      ]);
     }
 }
