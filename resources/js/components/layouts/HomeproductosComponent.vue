@@ -49,13 +49,11 @@
 			}
 		},
         mounted() {
-			console.log('Component ProductosHome.')
 			this.obtenerTodosPoductos();
 		},
 		methods:{
 			obtenerTodosPoductos(){
 				axios.get('/productsHome').then((response)=>{
-					console.log(response.data)
 					this.productos = response.data.productos;
 					this.url = response.data.url_path;
 					this.categorias = response.data.categorias;

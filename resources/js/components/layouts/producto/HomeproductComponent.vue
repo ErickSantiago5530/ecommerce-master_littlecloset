@@ -48,7 +48,6 @@
             }
         },
         mounted() {
-            console.log('Component mounted.')
             this.ruta_image = this.url+"/images/productos/";
             this.imagen= this.ruta_image+"/"+this.producto.id+"."+this.producto.extension;
             this.generaPrecio(this.producto.precio)
@@ -65,7 +64,6 @@
                 }     
             },
             agregaCarrito(){
-                console.log(this.producto.id)
                 var dataSend = {id:this.producto.id}
                 axios.post('/in_shopping_carts',dataSend).then((response)=>{
                     $("#productCount").text(response.data.products_count);     

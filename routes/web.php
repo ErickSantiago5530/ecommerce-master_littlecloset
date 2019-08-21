@@ -29,6 +29,7 @@ Route::Resource('products','ProductsController');
 /*Home*/
 Route::get('/productsHome','LayoutController@productosHome');
 Route::get('/boxesHome','LayoutController@BoxesHome');
+Route::get('/carrucelHome','LayoutController@carrucelHome');
 /*Carrito */
 Route::Resource('/carrito','ShoppingCartsController');
 /*Boxes */

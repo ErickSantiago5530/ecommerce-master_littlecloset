@@ -7,6 +7,7 @@ use App\Product;
 use App\Boxes;
 use App\Categoria;
 use App\Images;
+use App\Carrucel;
 
 
 class LayoutController extends Controller
@@ -30,6 +31,15 @@ class LayoutController extends Controller
         $respuesta = array();
         $respuesta['productos'] = $products;
         $respuesta['categorias'] = $categorias;
+        $respuesta['url_path'] = $image->url_path;
+        return response()->json($respuesta,200);
+    }
+
+    public function carrucelHome(){
+        $image = new Images;
+        $carrucel = Carrucel::carrucelHome();
+        $respuesta = array();
+        $respuesta['carrucel'] = $carrucel;
         $respuesta['url_path'] = $image->url_path;
         return response()->json($respuesta,200);
     }
