@@ -26,12 +26,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('styles/responsive.css') }}">
 
 </head>
-<body>
-    @include("header.header")
-    <div id="app" class="p-4">
-      @yield('content')
-    </div>
-    @include("foother.foother")        
+<body>    
+    <div id="app">      
+      <App-component></App-component>
+    </div>      
     
     <script src="{{ url('js/jquery-3.3.1.min.js') }}" ></script>
     <script src="{{ url('/js/app.js') }}"></script>

@@ -35,5 +35,5 @@ Route::Resource('/carrito','ShoppingCartsController');
 /*Boxes */
 Route::resource('/boxes','BoxesController');
 /*Favoritos */
-Route::resource('/favoritos','FavoritosController',['only' => ['index','store','destroy']]);
+Route::resource('/favoritos','FavoritosController',['only' => ['store','destroy']]);
 

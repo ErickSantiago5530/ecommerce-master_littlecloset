@@ -19,3 +19,7 @@ php artisan make:model Favoritos //para crear un modelo
 php artisan storage:link
 php artisan make:model Image -m
 
+/*Usar el sistema de rutas de vue*/
+npm install vue-router
+
+/*Usar vuetify*/

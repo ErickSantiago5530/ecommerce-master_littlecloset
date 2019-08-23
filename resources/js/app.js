@@ -33,7 +33,6 @@ function restartButton($button){
 
 window.Vue = require('vue');
 window.axios = require('axios');
-console.log(window.Vue);
 
 /**
  * The following block of code may be used to automatically register your
@@ -45,6 +44,16 @@ console.log(window.Vue);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('admin-component', require('./components/AdminComponent.vue'));
+//views
+
+//principal
+Vue.component('App-component', require('./components/AppComponent.vue'));
+//Header
+Vue.component('Header-component', require('./components/header/headerComponent.vue'));
+Vue.component('Menu-component', require('./components/header/menuComponent.vue'));
+//Foother
+Vue.component('footherbar-component', require('./components/foother/footherbarComponent.vue'));
+Vue.component('foothercontent-component', require('./components/foother/foothercontentComponent.vue'));
 
 //layouts
 Vue.component('Home-component', require('./components/layouts/HomeComponent.vue'));
@@ -56,7 +65,12 @@ Vue.component('Homefeatures-component', require('./components/layouts/Homefeatur
 // Carrucel
 Vue.component('Slide-component', require('./components/layouts/home/SlideComponent.vue'));
 Vue.component('Carrucel-component', require('./components/layouts/home/CarrucelComponent.vue'));
+//Views
+// Vue.component('Products-component', require('./components/views/ProductsComponent.vue'));
 
+//=============================================================================
+//                              A D M I N
+//=============================================================================
 // boxes Admin
 Vue.component('boxes-component', require('./components/boxes/BoxesComponent.vue'));
 Vue.component('BoxesTable-component', require('./components/boxes/BoxesTableComponent.vue'));
@@ -69,6 +83,8 @@ Vue.component('ProductosTable-component', require('./components/productos/Produc
 Vue.component('Productos-component', require('./components/productos/ProductosComponent.vue'));
 
 
+import router from './routes';
+
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
@@ -80,7 +96,5 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 const app = new Vue({
     el: '#app',
-    data: {
-      message: 'Hello Vue!'
-    }
+    router
 });
