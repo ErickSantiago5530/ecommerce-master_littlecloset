@@ -1,11 +1,3 @@
 <template>
-    <h1>Hola soy Home</h1>
+    <Home-component></Home-component>
 </template>
-
-<script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
-</script>

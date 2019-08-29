@@ -56,6 +56,7 @@ Vue.component('footherbar-component', require('./components/foother/footherbarCo
 Vue.component('foothercontent-component', require('./components/foother/foothercontentComponent.vue'));
 
 //layouts
+Vue.component('Layout-component', require('./components/layouts/LayoutComponent.vue'));
 Vue.component('Home-component', require('./components/layouts/HomeComponent.vue'));
 Vue.component('Homeproductos-component', require('./components/layouts/HomeproductosComponent.vue'));
 Vue.component('Homeproduct-component', require('./components/layouts/producto/HomeproductComponent.vue'));
